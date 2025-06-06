@@ -1,14 +1,14 @@
-# Geestland Website
+# Geesthaven Website
 
-Dies ist eine statische Nachbildung der Startseite von [geestland.eu](https://www.geestland.eu/), erstellt mit HTML und CSS.
+Dies ist eine statische Nachbildung einer modernen Stadtseite – gestaltet als Beispiel für die fiktive Stadt **Geesthaven**.
 
 ## Features
 
-- Responsives Design
-- Navigationsmenü
-- Aktuelle Neuigkeiten
-- Bilder und Logo
+- Modernes responsives Design
+- Navigationsleiste und Titelbild
+- Nachrichtenbereich mit Bildern
+- Platz für echtes Stadtlogo und Fotos
 
 ## Vorschau
 
-Enthält Beispielbilder und ein Logo im Ordner `images/`.
+Siehe `index.html` – alle Bilder können ersetzt werden im Ordner `images/`.
