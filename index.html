@@ -12,7 +12,7 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="icon" href="assets/wappen.png" />
   
-  <!-- FullCalendar CSS -->
+  <!-- FullCalendar CSS (falls Kalender verwendet wird) -->
   <link href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.css" rel="stylesheet">
   
   <style>
@@ -20,7 +20,7 @@
     @media (max-width: 768px) {
       nav { display: none; }
     }
-    /* Kalender-Container: zentriert und max. 600px breit */
+    /* Kalender-Container falls verwendet */
     #calendar {
       width: 100%;
       max-width: 600px;
@@ -53,9 +53,7 @@
           <!-- Icon wird beim Laden gesetzt -->
         </button>
         <!-- Language Toggle Button -->
-        <button id="langToggleButton" class="p-2 rounded-full bg-green-200 dark:bg-green-600 text-green-800 dark:text-green-100 transition-colors duration-300">
-          EN
-        </button>
+        <button id="langToggleButton" class="p-2 rounded-full bg-green-200 dark:bg-green-600 text-green-800 dark:text-green-100 transition-colors duration-300">EN</button>
       </div>
     </div>
   </header>
@@ -101,14 +99,14 @@
     </div>
   </main>
 
-  <!-- Kalender Section (integriert unter den Karten) -->
+  <!-- Kalender Section (optional, unter den Karten) -->
   <section id="events-calendar" class="max-w-7xl mx-auto px-4 sm:px-6 py-12">
     <h2 class="text-3xl font-bold text-blue-900 dark:text-blue-300 mb-6">Aktuelle Veranstaltungen &amp; Feiertage</h2>
     <div id="calendar"></div>
   </section>
 
-  <!-- Footer -->
-  <footer id="kontakt" class="relative bg-gray-900 text-gray-300 py-8">
+  <!-- Footer mit Dunkelblauem Hintergrund und Schiff als Hintergrundbild -->
+  <footer id="kontakt" class="relative text-gray-300 py-8" style="background-color: darkblue; background-image: url('assets/ship.png'); background-repeat: no-repeat; background-position: center bottom; background-size: contain;">
     <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 grid md:grid-cols-2">
       <div>
         <h4 class="text-lg font-semibold mb-2" data-i18n-key="footer_title">Stadt Geesthaven</h4>
