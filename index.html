@@ -11,20 +11,20 @@
   </script>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="icon" href="assets/wappen.png" />
-  
-  <!-- FullCalendar CSS (falls Kalender verwendet wird) -->
+
+  <!-- FullCalendar CSS -->
   <link href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.css" rel="stylesheet">
   
   <style>
-    /* Optional: Einfache mobile Navigation optimieren */
+    /* Für mobile Geräte: Navigation ggf. ausblenden */
     @media (max-width: 768px) {
       nav { display: none; }
     }
-    /* Kalender-Container (falls benötigt) */
+    /* Kalender-Container: linksbündig ausrichten */
     #calendar {
       width: 100%;
-      max-width: 600px;
-      margin: 0 auto;
+      max-width: 900px;
+      margin: 0;  /* Kein Auto-Centering: bündig links */
     }
   </style>
 </head>
@@ -32,41 +32,35 @@
   <!-- Navigation -->
   <header class="bg-white dark:bg-gray-800 shadow-md fixed top-0 w-full z-50">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 py-4 flex justify-between items-center">
-      <!-- Logo und Überschrift als Link -->
+      <!-- Logo und Titel -->
       <a href="index.html" class="flex items-center space-x-3">
         <img src="assets/wappen.png" alt="Wappen Geesthaven" class="h-12 w-auto">
         <h1 class="text-3xl font-bold text-blue-900 dark:text-blue-300">Geesthaven</h1>
       </a>
-      <!-- Navigation (ohne Instagram-Link, da der fixierte Button unten rechts ist) -->
+      <!-- Navigation (ohne extranen Instagram-Link) -->
       <nav class="hidden md:flex space-x-6 text-md font-medium text-gray-700 dark:text-gray-300">
-        <a href="index.html" class="hover:text-blue-700 transition duration-300" data-i18n-key="nav_start">Start</a>
-        <a href="aktuelles.html" class="hover:text-blue-700 transition duration-300" data-i18n-key="nav_aktuelles">Aktuelles</a>
-        <a href="geschichte.html" class="hover:text-blue-700 transition duration-300" data-i18n-key="nav_geschichte">Geschichte</a>
-        <a href="rathaus.html" class="hover:text-blue-700 transition duration-300" data-i18n-key="nav_rathaus">Rathaus</a>
-        <a href="leben.html" class="hover:text-blue-700 transition duration-300" data-i18n-key="nav_leben">Leben &amp; Wohnen</a>
-        <a href="kontakt.html" class="hover:text-blue-700 transition duration-300" data-i18n-key="nav_kontakt">Kontakt</a>
-        <a href="flyer.html" class="hover:text-blue-700 transition duration-300" data-i18n-key="nav_flyer">Flyer</a>
+        <a href="index.html" data-i18n-key="nav_start" class="hover:text-blue-700 transition duration-300">Start</a>
+        <a href="aktuelles.html" data-i18n-key="nav_aktuelles" class="hover:text-blue-700 transition duration-300">Aktuelles</a>
+        <a href="geschichte.html" data-i18n-key="nav_geschichte" class="hover:text-blue-700 transition duration-300">Geschichte</a>
+        <a href="rathaus.html" data-i18n-key="nav_rathaus" class="hover:text-blue-700 transition duration-300">Rathaus</a>
+        <a href="leben.html" data-i18n-key="nav_leben" class="hover:text-blue-700 transition duration-300">Leben &amp; Wohnen</a>
+        <a href="kontakt.html" data-i18n-key="nav_kontakt" class="hover:text-blue-700 transition duration-300">Kontakt</a>
+        <a href="flyer.html" data-i18n-key="nav_flyer" class="hover:text-blue-700 transition duration-300">Flyer</a>
       </nav>
       <div class="flex items-center space-x-2">
-        <!-- Dark Mode Toggle Button -->
-        <button id="darkToggleButton" class="p-2 rounded-full bg-gray-300 dark:bg-gray-700 text-gray-800 dark:text-gray-100 transition-colors duration-300">
-          <!-- Icon wird beim Laden gesetzt -->
-        </button>
-        <!-- Language Toggle Button -->
-        <button id="langToggleButton" class="p-2 rounded-full bg-green-200 dark:bg-green-600 text-green-800 dark:text-green-100 transition-colors duration-300">
-          EN
-        </button>
+        <!-- Dark Mode Toggle -->
+        <button id="darkToggleButton" class="p-2 rounded-full bg-gray-300 dark:bg-gray-700 text-gray-800 dark:text-gray-100 transition-colors duration-300"></button>
+        <!-- Sprachumschaltung -->
+        <button id="langToggleButton" class="p-2 rounded-full bg-green-200 dark:bg-green-600 text-green-800 dark:text-green-100 transition-colors duration-300">EN</button>
       </div>
     </div>
   </header>
-  
+
   <!-- Hero Section -->
   <section id="hero" class="relative bg-blue-50 pt-24">
     <img src="assets/hero.png" alt="Geesthaven Panorama" class="w-full h-96 object-cover">
     <div class="absolute inset-0 bg-blue-900 bg-opacity-50 flex items-center justify-center">
-      <h2 class="text-white text-5xl font-bold drop-shadow-xl" data-i18n-key="hero_title">
-        Willkommen in Geesthaven
-      </h2>
+      <h2 data-i18n-key="hero_title" class="text-white text-5xl font-bold drop-shadow-xl">Willkommen in Geesthaven</h2>
     </div>
   </section>
   
@@ -76,54 +70,34 @@
     <div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-shadow duration-300">
       <img src="assets/news.png" alt="Aktuelles" class="w-full h-64 object-cover">
       <div class="p-5">
-        <h3 class="text-xl font-semibold text-blue-800 dark:text-blue-200 mb-2" data-i18n-key="card_aktuelles_title">
-          Aktuelles
-        </h3>
-        <p class="text-gray-600 dark:text-gray-300 mb-3" data-i18n-key="card_aktuelles_desc">
-          Neuigkeiten und Veranstaltungen in Geesthaven.
-        </p>
-        <a href="aktuelles.html" class="block text-blue-600 hover:underline" data-i18n-key="learn_more">
-          Mehr erfahren &rarr;
-        </a>
+        <h3 data-i18n-key="card_aktuelles_title" class="text-xl font-semibold text-blue-800 dark:text-blue-200 mb-2">Aktuelles</h3>
+        <p data-i18n-key="card_aktuelles_desc" class="text-gray-600 dark:text-gray-300 mb-3">Neuigkeiten und Veranstaltungen in Geesthaven.</p>
+        <a href="aktuelles.html" data-i18n-key="learn_more" class="block text-blue-600 hover:underline">Mehr erfahren &rarr;</a>
       </div>
     </div>
-  
     <!-- Card: Digitales Rathaus -->
     <div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-shadow duration-300">
       <img src="assets/rathaus.png" alt="Rathaus" class="w-full h-64 object-cover object-top">
       <div class="p-5">
-        <h3 class="text-xl font-semibold text-blue-800 dark:text-blue-200 mb-2" data-i18n-key="card_rathaus_title">
-          Digitales Rathaus
-        </h3>
-        <p class="text-gray-600 dark:text-gray-300 mb-3" data-i18n-key="card_rathaus_desc">
-          Formulare, Online-Termine und Verwaltungsinfos.
-        </p>
-        <a href="rathaus.html" class="block text-blue-600 hover:underline" data-i18n-key="learn_more">
-          Mehr erfahren &rarr;
-        </a>
+        <h3 data-i18n-key="card_rathaus_title" class="text-xl font-semibold text-blue-800 dark:text-blue-200 mb-2">Digitales Rathaus</h3>
+        <p data-i18n-key="card_rathaus_desc" class="text-gray-600 dark:text-gray-300 mb-3">Formulare, Online-Termine und Verwaltungsinfos.</p>
+        <a href="rathaus.html" data-i18n-key="learn_more" class="block text-blue-600 hover:underline">Mehr erfahren &rarr;</a>
       </div>
     </div>
-  
     <!-- Card: Leben & Wohnen -->
     <div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-shadow duration-300">
       <img src="assets/life.png" alt="Leben in Geesthaven" class="w-full h-64 object-cover">
       <div class="p-5">
-        <h3 class="text-xl font-semibold text-blue-800 dark:text-blue-200 mb-2" data-i18n-key="card_leben_title">
-          Leben &amp; Wohnen
-        </h3>
-        <p class="text-gray-600 dark:text-gray-300 mb-3" data-i18n-key="card_leben_desc">
-          Informationen zu Wohnkultur, Bildung und Freizeit.
-        </p>
-        <a href="leben.html" class="block text-blue-600 hover:underline" data-i18n-key="learn_more">
-          Mehr erfahren &rarr;
-        </a>
+        <h3 data-i18n-key="card_leben_title" class="text-xl font-semibold text-blue-800 dark:text-blue-200 mb-2">Leben &amp; Wohnen</h3>
+        <p data-i18n-key="card_leben_desc" class="text-gray-600 dark:text-gray-300 mb-3">Informationen zu Wohnkultur, Bildung und Freizeit.</p>
+        <a href="leben.html" data-i18n-key="learn_more" class="block text-blue-600 hover:underline">Mehr erfahren &rarr;</a>
       </div>
     </div>
   </main>
   
-  <!-- Kalender Section (integriert unter den Karten) -->
+  <!-- Kalender Section -->
   <section id="events-calendar" class="max-w-7xl mx-auto px-4 sm:px-6 py-12">
-    <h2 class="text-3xl font-bold text-blue-900 dark:text-blue-300 mb-6">
+    <h2 data-i18n-key="calendar_title" class="text-3xl font-bold text-blue-900 dark:text-blue-300 mb-6">
       Aktuelle Veranstaltungen &amp; Feiertage
     </h2>
     <div id="calendar"></div>
@@ -133,9 +107,7 @@
   <footer id="kontakt" class="relative bg-gray-900 text-gray-300 py-8 overflow-hidden">
     <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 grid md:grid-cols-2">
       <div>
-        <h4 class="text-lg font-semibold mb-2" data-i18n-key="footer_title">
-          Stadt Geesthaven
-        </h4>
+        <h4 data-i18n-key="footer_title" class="text-lg font-semibold mb-2">Stadt Geesthaven</h4>
         <address class="not-italic">
           12345 Geesthaven<br>
           Rathausplatz 1<br>
@@ -149,20 +121,20 @@
         <p class="mt-4 text-sm">&copy; 2025 Stadt Geesthaven</p>
       </div>
     </div>
-    <!-- Schiff-Bild: Auf der Leiste, rechts positioniert, größer und innerhalb des Footers -->
-    <img src="assets/ship.png" alt="Schiff" class="absolute bottom-0 right-0 mr-4 mb-0 w-auto h-40 pointer-events-none">
+    <!-- Schiff-Bild: exakt in der Leiste, rechts positioniert und etwas größer -->
+    <img src="assets/ship.png" alt="Schiff" class="absolute bottom-0 right-4 w-auto h-48 pointer-events-none">
   </footer>
   
-  <!-- Fixierter Instagram-Button (unten rechts, bleibt beim Scrollen sichtbar) -->
+  <!-- Fixierter Instagram-Button (unten rechts, bleibt sichtbar) -->
   <a href="https://instagram.com/visitgeesthaven" target="_blank" class="fixed bottom-4 right-4 z-50">
     <div class="w-16 h-16 bg-white rounded-full shadow-lg flex items-center justify-center">
+      <!-- Stelle sicher, dass assets/instagram.svg existiert – alternativ nutze PNG -->
       <img src="assets/instagram.svg" alt="Instagram" class="w-8 h-8">
     </div>
   </a>
   
   <!-- FullCalendar JS -->
   <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js"></script>
-  <!-- Initialize FullCalendar -->
   <script>
     document.addEventListener('DOMContentLoaded', function() {
       var calendarEl = document.getElementById('calendar');
@@ -170,13 +142,15 @@
         initialView: 'dayGridMonth',
         locale: 'de',
         headerToolbar: {
-          left: 'today',
-          center: '',
-          right: ''
+          left: 'prev',
+          center: 'title',
+          right: 'next'
         },
-        aspectRatio: 2.5,  // Mehr Querformat
+        aspectRatio: 3,   // Querformat bevorzugt
         buttonText: {
-          today: 'heute'
+          today: 'Heute',
+          prev: '←',
+          next: '→'
         },
         events: [
           { title: 'Neujahr', start: '2025-01-01', color: '#dc2626' },
@@ -200,7 +174,6 @@
   <!-- JavaScript: Dark Mode und Sprachumschaltung -->
   <script>
     document.addEventListener("DOMContentLoaded", function() {
-      // DARK MODE:
       const darkButton = document.getElementById("darkToggleButton");
       if (localStorage.getItem('darkMode') === 'true') {
         document.documentElement.classList.add("dark");
@@ -214,8 +187,7 @@
         localStorage.setItem('darkMode', isDark ? 'true' : 'false');
         darkButton.innerHTML = isDark ? "☀️" : "🌑";
       });
-  
-      // SPRACHUMSCHALTUNG:
+      
       let currentLang = localStorage.getItem('lang') || "de";
       const langButton = document.getElementById("langToggleButton");
       const translations = {
@@ -228,7 +200,16 @@
           nav_leben: "Leben & Wohnen",
           nav_kontakt: "Kontakt",
           nav_flyer: "Flyer",
-          footer_title: "Stadt Geesthaven"
+          footer_title: "Stadt Geesthaven",
+          hero_title: "Willkommen in Geesthaven",
+          card_aktuelles_title: "Aktuelles",
+          card_aktuelles_desc: "Neuigkeiten und Veranstaltungen in Geesthaven.",
+          card_rathaus_title: "Digitales Rathaus",
+          card_rathaus_desc: "Formulare, Online-Termine und Verwaltungsinfos.",
+          card_leben_title: "Leben & Wohnen",
+          card_leben_desc: "Informationen zu Wohnkultur, Bildung und Freizeit.",
+          learn_more: "Mehr erfahren →",
+          calendar_title: "Aktuelle Veranstaltungen & Feiertage"
         },
         en: {
           title: "Geesthaven – Discover the City",
@@ -239,7 +220,16 @@
           nav_leben: "Living & Housing",
           nav_kontakt: "Contact",
           nav_flyer: "Flyer",
-          footer_title: "City of Geesthaven"
+          footer_title: "City of Geesthaven",
+          hero_title: "Welcome to Geesthaven",
+          card_aktuelles_title: "News & Events",
+          card_aktuelles_desc: "News and events in Geesthaven.",
+          card_rathaus_title: "Digital City Hall",
+          card_rathaus_desc: "Forms, online appointments, and administrative info.",
+          card_leben_title: "Living & Housing",
+          card_leben_desc: "Information on housing, education, and leisure.",
+          learn_more: "Learn more →",
+          calendar_title: "Current Events & Holidays"
         }
       };
       langButton.innerHTML = (currentLang === "de") ? "EN" : "DE";
