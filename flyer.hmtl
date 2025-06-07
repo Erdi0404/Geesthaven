@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Flyer – Geesthaven</title>
+  
+  <!-- Tailwind Dark Mode Setup (class-based) -->
+  <script>
+    tailwind.config = { darkMode: 'class' };
+  </script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="icon" href="assets/wappen.png" />
+  
+  <style>
+    @media (max-width: 768px) {
+      nav { display: none; }
+    }
+  </style>
+</head>
+<body class="bg-gray-100 text-gray-800 font-sans dark:bg-gray-900 dark:text-gray-200">
+  <!-- Navigation (wie in index.html) -->
+  <header class="bg-white dark:bg-gray-800 shadow-md fixed top-0 w-full z-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 py-4 flex justify-between items-center">
+      <a href="/" class="flex items-center space-x-3">
+        <img src="assets/wappen.png" alt="Wappen Geesthaven" class="h-12 w-auto">
+        <h1 class="text-3xl font-bold text-blue-900 dark:text-blue-300">Geesthaven</h1>
+      </a>
+      <nav class="hidden md:flex space-x-6 text-md font-medium text-gray-700 dark:text-gray-300">
+        <a href="/" class="hover:text-blue-700 transition duration-300" data-i18n-key="nav_start">Start</a>
+        <a href="aktuelles.html" class="hover:text-blue-700 transition duration-300" data-i18n-key="nav_aktuelles">Aktuelles</a>
+        <a href="geschichte.html" class="hover:text-blue-700 transition duration-300" data-i18n-key="nav_geschichte">Geschichte</a>
+        <a href="rathaus.html" class="hover:text-blue-700 transition duration-300" data-i18n-key="nav_rathaus">Rathaus</a>
+        <a href="leben.html" class="hover:text-blue-700 transition duration-300" data-i18n-key="nav_leben">Leben &amp; Wohnen</a>
+        <a href="kontakt.html" class="hover:text-blue-700 transition duration-300" data-i18n-key="nav_kontakt">Kontakt</a>
+        <a href="flyer.html" class="hover:text-blue-700 transition duration-300" data-i18n-key="nav_flyer">Flyer</a>
+      </nav>
+      <div class="flex items-center space-x-2">
+        <button id="darkToggleButton" class="p-2 rounded-full bg-gray-300 dark:bg-gray-700 text-gray-800 dark:text-gray-100 transition-colors duration-300"></button>
+        <button id="langToggleButton" class="p-2 rounded-full bg-green-200 dark:bg-green-600 text-green-800 dark:text-green-100 transition-colors duration-300">EN</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Flyer Page Content -->
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 py-24 mt-24">
+    <h1 class="text-4xl font-bold text-blue-900 dark:text-blue-300 mb-8">Flyer</h1>
+    <p class="text-gray-700 dark:text-gray-300 mb-8">Hier findest du unseren aktuellen Flyer.</p>
+    <!-- Flyer Bild -->
+    <div class="mt-12">
+      <img src="assets/flyer.jpg" alt="Flyer" class="w-full max-w-4xl mx-auto shadow-lg">
+    </div>
+  </main>
+
+  <!-- Footer (wie in index.html) -->
+  <footer id="kontakt" class="relative bg-gray-900 text-gray-300 py-8">
+    <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 grid md:grid-cols-2">
+      <div>
+        <h4 class="text-lg font-semibold mb-2" data-i18n-key="footer_title">Stadt Geesthaven</h4>
+        <address class="not-italic">
+          12345 Geesthaven<br>
+          Rathausplatz 1<br>
+          Tel: 01234 56789<br>
+          E-Mail: <a href="mailto:info@geesthaven.de" class="hover:underline">info@geesthaven.de</a>
+        </address>
+      </div>
+      <div class="md:text-right mt-4 md:mt-0">
+        <a href="impressum.html" class="block hover:underline">Impressum</a>
+        <a href="datenschutz.html" class="block hover:underline mt-1">Datenschutz</a>
+        <p class="mt-4 text-sm">&copy; 2025 Stadt Geesthaven</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- JavaScript: Dark Mode und Sprachumschaltung (wie in index.html) -->
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      const darkButton = document.getElementById("darkToggleButton");
+      if (localStorage.getItem('darkMode') === 'true') {
+        document.documentElement.classList.add("dark");
+        darkButton.innerHTML = "☀️";
+      } else {
+        darkButton.innerHTML = "🌑";
+      }
+      darkButton.addEventListener("click", function() {
+        document.documentElement.classList.toggle("dark");
+        const isDark = document.documentElement.classList.contains("dark");
+        localStorage.setItem('darkMode', isDark ? 'true' : 'false');
+        darkButton.innerHTML = isDark ? "☀️" : "🌑";
+      });
+
+      let currentLang = localStorage.getItem('lang') || "de";
+      const langButton = document.getElementById("langToggleButton");
+      const translations = {
+        de: {
+          title: "Geesthaven – Entdecke die Stadt",
+          nav_start: "Start",
+          nav_aktuelles: "Aktuelles",
+          nav_geschichte: "Geschichte",
+          nav_rathaus: "Rathaus",
+          nav_leben: "Leben & Wohnen",
+          nav_kontakt: "Kontakt",
+          nav_flyer: "Flyer",
+          footer_title: "Stadt Geesthaven"
+        },
+        en: {
+          title: "Geesthaven – Discover the City",
+          nav_start: "Home",
+          nav_aktuelles: "News",
+          nav_geschichte: "History",
+          nav_rathaus: "City Hall",
+          nav_leben: "Living & Housing",
+          nav_kontakt: "Contact",
+          nav_flyer: "Flyer",
+          footer_title: "City of Geesthaven"
+        }
+      };
+      langButton.innerHTML = (currentLang === "de") ? "EN" : "DE";
+      function updateLanguage() {
+        document.querySelectorAll("[data-i18n-key]").forEach(function(el) {
+          const key = el.getAttribute("data-i18n-key");
+          if (translations[currentLang] && translations[currentLang][key]) {
+            el.innerHTML = translations[currentLang][key];
+          }
+        });
+        document.title = translations[currentLang].title;
+      }
+      updateLanguage();
+      langButton.addEventListener("click", function() {
+        currentLang = (currentLang === "de") ? "en" : "de";
+        localStorage.setItem('lang', currentLang);
+        langButton.innerHTML = (currentLang === "de") ? "EN" : "DE";
+        updateLanguage();
+      });
+    });
+  </script>
+</body>
+</html>
