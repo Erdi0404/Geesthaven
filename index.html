@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Geesthaven</title>
+  <title>Geesthaven - Entdecke die Stadt</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="icon" href="assets/favicon.png" />
 </head>
@@ -13,15 +13,16 @@
   <header class="bg-white shadow-md fixed top-0 w-full z-50">
     <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
       <div class="flex items-center space-x-3">
-  <img src="assets/wappen.png" alt="Wappen Geesthaven" class="h-10 w-auto">
-  <h1 class="text-2xl font-bold text-blue-900">Geesthaven</h1>
-</div>
-
+        <img src="assets/wappen.png" alt="Wappen Geesthaven" class="h-10 w-auto">
+        <h1 class="text-2xl font-bold text-blue-900">Geesthaven</h1>
+      </div>
       <nav class="space-x-6 text-sm font-medium text-gray-700">
         <a href="#start" class="hover:text-blue-700">Start</a>
         <a href="#aktuelles" class="hover:text-blue-700">Aktuelles</a>
+        <a href="#geschichte" class="hover:text-blue-700">Geschichte</a>
         <a href="#rathaus" class="hover:text-blue-700">Rathaus</a>
         <a href="#leben" class="hover:text-blue-700">Leben & Wohnen</a>
+        <a href="#sehenswuerdigkeiten" class="hover:text-blue-700">Sehenswürdigkeiten</a>
         <a href="#kontakt" class="hover:text-blue-700">Kontakt</a>
       </nav>
     </div>
@@ -35,10 +36,9 @@
     </div>
   </section>
 
-  <!-- Main Content -->
+  <!-- Main Cards Section -->
   <main class="max-w-7xl mx-auto p-6 grid gap-6 md:grid-cols-3 mt-10">
-
-    <!-- Card 1 -->
+    <!-- Card 1: Aktuelles -->
     <div id="aktuelles" class="bg-white rounded-2xl shadow-md overflow-hidden">
       <img src="assets/news.jpg" alt="Aktuelles" class="w-full h-48 object-cover">
       <div class="p-4">
@@ -48,7 +48,7 @@
       </div>
     </div>
 
-    <!-- Card 2 -->
+    <!-- Card 2: Digitales Rathaus -->
     <div id="rathaus" class="bg-white rounded-2xl shadow-md overflow-hidden">
       <img src="assets/rathaus.jpg" alt="Rathaus" class="w-full h-48 object-cover">
       <div class="p-4">
@@ -58,7 +58,7 @@
       </div>
     </div>
 
-    <!-- Card 3 -->
+    <!-- Card 3: Leben in Geesthaven -->
     <div id="leben" class="bg-white rounded-2xl shadow-md overflow-hidden">
       <img src="assets/life.jpg" alt="Leben in Geesthaven" class="w-full h-48 object-cover">
       <div class="p-4">
@@ -69,20 +69,57 @@
     </div>
   </main>
 
+  <!-- Zusatz: Geschichte von Geesthaven -->
+  <section id="geschichte" class="max-w-7xl mx-auto p-6 mt-10 bg-white rounded-2xl shadow-md">
+    <h2 class="text-2xl font-bold text-blue-900 mb-4">Geschichte von Geesthaven</h2>
+    <p class="text-gray-700 mb-4">
+      Geesthaven hat eine reiche Historie, die bis ins Mittelalter zurückreicht. Ursprünglich als kleines Fischerdorf gegründet, entwickelte sich die Stadt über die Jahrhunderte zu einem bedeutenden Handelszentrum an der Küste.
+    </p>
+    <p class="text-gray-700">
+      Mit Blick auf die Vergangenheit lässt sich erkennen, wie Tradition und Fortschritt harmonisch miteinander verbunden werden. Historische Bauten und enge Gassen erzählen von längst vergangenen Zeiten, während moderne Einrichtungen das städtische Leben prägen.
+    </p>
+  </section>
+
+  <!-- Zusatz: Sehenswürdigkeiten -->
+  <section id="sehenswuerdigkeiten" class="max-w-7xl mx-auto p-6 mt-10 bg-white rounded-2xl shadow-md">
+    <h2 class="text-2xl font-bold text-blue-900 mb-4">Sehenswürdigkeiten in Geesthaven</h2>
+    <p class="text-gray-700 mb-4">
+      Von historischen Fachwerkhäusern über prunkvolle Kirchen bis hin zu modernen Kulturzentren – Geesthaven bietet eine beeindruckende Mischung an Sehenswürdigkeiten. Jede Ecke der Stadt hat ihren eigenen Charme und erzählt eine einzigartige Geschichte.
+    </p>
+    <p class="text-gray-700">
+      Erkunden Sie malerische Altstadtgassen, besuchen Sie Museen oder genießen Sie den Blick vom Panorama-Hügel – Geesthaven überrascht auf vielen Ebenen.
+    </p>
+  </section>
+
   <!-- Detailbereiche -->
   <section id="aktuelles-details" class="max-w-4xl mx-auto mt-16 px-6">
     <h2 class="text-2xl font-bold text-blue-900 mb-4">Details: Aktuelles</h2>
-    <p class="text-gray-700">Hier finden Sie alle aktuellen Meldungen und Hinweise aus Geesthaven. Veranstaltungen, Bauprojekte, Mitteilungen der Verwaltung u.v.m.</p>
+    <p class="text-gray-700 mb-4">
+      Hier finden Sie alle aktuellen Meldungen und Hinweise aus Geesthaven. Bleiben Sie informiert über bevorstehende Veranstaltungen, neue Projekte und offizielle Mitteilungen der Stadtverwaltung.
+    </p>
+    <p class="text-gray-700">
+      Unsere Berichterstattung umfasst auch lokale Initiativen, die das Stadtbild und das Gemeinschaftsleben nachhaltig prägen.
+    </p>
   </section>
 
   <section id="rathaus-details" class="max-w-4xl mx-auto mt-16 px-6">
-    <h2 class="text-2xl font-bold text-blue-900 mb-4">Details: Rathaus</h2>
-    <p class="text-gray-700">Nutzen Sie unsere digitalen Angebote, laden Sie Formulare herunter oder vereinbaren Sie Termine online.</p>
+    <h2 class="text-2xl font-bold text-blue-900 mb-4">Details: Digitales Rathaus</h2>
+    <p class="text-gray-700 mb-4">
+      Unser digitales Rathaus bietet Ihnen einen schnellen Zugang zu Verwaltungsangeboten. Laden Sie Formulare herunter, buchen Sie Termine und informieren Sie sich über aktuelle Verwaltungsmitteilungen.
+    </p>
+    <p class="text-gray-700">
+      Die Digitalisierung der Prozesse hilft dabei, Ihre Anliegen effizienter zu bearbeiten und sorgt für eine zeitgemäße Verwaltung.
+    </p>
   </section>
 
   <section id="leben-details" class="max-w-4xl mx-auto mt-16 px-6">
     <h2 class="text-2xl font-bold text-blue-900 mb-4">Details: Leben in Geesthaven</h2>
-    <p class="text-gray-700">Von Kitas über Sportvereine bis zu Wohnbaugebieten – das Leben in Geesthaven ist vielfältig und lebenswert.</p>
+    <p class="text-gray-700 mb-4">
+      Geesthaven bietet eine hohe Lebensqualität mit einem umfangreichen Freizeit-, Bildungs- und Kulturangebot. Genießen Sie grüne Parks, spannende Veranstaltungen und eine lebendige Gemeinschaft.
+    </p>
+    <p class="text-gray-700">
+      Die Mischung aus Tradition und Moderne macht das Leben in Geesthaven einzigartig – ob für Familien, Studierende oder Senioren.
+    </p>
   </section>
 
   <!-- Footer -->
@@ -90,7 +127,12 @@
     <div class="max-w-7xl mx-auto px-4 py-8 grid md:grid-cols-2 gap-6">
       <div>
         <h4 class="text-lg font-semibold mb-2">Stadt Geesthaven</h4>
-        <p>12345 Geesthaven<br />Rathausplatz 1<br />Tel: 01234 56789<br />E-Mail: info@geesthaven.de</p>
+        <p>
+          12345 Geesthaven<br>
+          Rathausplatz 1<br>
+          Tel: 01234 56789<br>
+          E-Mail: info@geesthaven.de
+        </p>
       </div>
       <div class="md:text-right">
         <a href="#impressum" class="block hover:underline">Impressum</a>
