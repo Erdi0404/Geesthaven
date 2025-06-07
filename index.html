@@ -11,7 +11,10 @@
   </script>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="icon" href="assets/wappen.png" />
-  
+
+  <!-- FullCalendar CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.css" rel="stylesheet">
+
   <style>
     /* Optional: Einfache mobile Navigation optimieren */
     @media (max-width: 768px) {
@@ -59,6 +62,12 @@
     </div>
   </section>
 
+  <!-- Kalender Section für Veranstaltungen & Feiertage -->
+  <section id="events-calendar" class="max-w-7xl mx-auto px-4 sm:px-6 py-12">
+    <h2 class="text-3xl font-bold text-blue-900 dark:text-blue-300 mb-6">Aktuelle Veranstaltungen &amp; Feiertage</h2>
+    <div id="calendar"></div>
+  </section>
+
   <!-- Main Cards Section -->
   <main class="max-w-7xl mx-auto px-4 sm:px-6 py-12 grid gap-8 md:grid-cols-3">
     <!-- Card: Aktuelles -->
@@ -67,7 +76,7 @@
       <div class="p-5">
         <h3 class="text-xl font-semibold text-blue-800 dark:text-blue-200 mb-2" data-i18n-key="card_aktuelles_title">Aktuelles</h3>
         <p class="text-gray-600 dark:text-gray-300 mb-3" data-i18n-key="card_aktuelles_desc">Neuigkeiten und Veranstaltungen in Geesthaven.</p>
-        <a href="aktuelles.html" class="block text-blue-600 hover:underline" data-i18n-key="learn_more">Mehr erfahren →</a>
+        <a href="aktuelles.html" class="block text-blue-600 hover:underline" data-i18n-key="learn_more">Mehr erfahren &rarr;</a>
       </div>
     </div>
 
@@ -77,7 +86,7 @@
       <div class="p-5">
         <h3 class="text-xl font-semibold text-blue-800 dark:text-blue-200 mb-2" data-i18n-key="card_rathaus_title">Digitales Rathaus</h3>
         <p class="text-gray-600 dark:text-gray-300 mb-3" data-i18n-key="card_rathaus_desc">Formulare, Online-Termine und Verwaltungsinfos.</p>
-        <a href="rathaus.html" class="block text-blue-600 hover:underline" data-i18n-key="learn_more">Mehr erfahren →</a>
+        <a href="rathaus.html" class="block text-blue-600 hover:underline" data-i18n-key="learn_more">Mehr erfahren &rarr;</a>
       </div>
     </div>
 
@@ -87,7 +96,7 @@
       <div class="p-5">
         <h3 class="text-xl font-semibold text-blue-800 dark:text-blue-200 mb-2" data-i18n-key="card_leben_title">Leben &amp; Wohnen</h3>
         <p class="text-gray-600 dark:text-gray-300 mb-3" data-i18n-key="card_leben_desc">Informationen zu Wohnkultur, Bildung und Freizeit.</p>
-        <a href="leben.html" class="block text-blue-600 hover:underline" data-i18n-key="learn_more">Mehr erfahren →</a>
+        <a href="leben.html" class="block text-blue-600 hover:underline" data-i18n-key="learn_more">Mehr erfahren &rarr;</a>
       </div>
     </div>
   </main>
@@ -112,7 +121,37 @@
     </div>
   </footer>
 
-  <!-- JavaScript: Dark Mode, Sprachumschaltung -->
+  <!-- FullCalendar JS -->
+  <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js"></script>
+  <!-- Initialize FullCalendar -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      var calendarEl = document.getElementById('calendar');
+      var calendar = new FullCalendar.Calendar(calendarEl, {
+        initialView: 'dayGridMonth',
+        locale: 'de',
+        height: 600,
+        events: [
+          { title: 'Neujahr', start: '2025-01-01', color: '#dc2626' },
+          { title: 'Karfreitag', start: '2025-04-18' },
+          { title: 'Ostermontag', start: '2025-04-21' },
+          { title: 'Tag der Arbeit', start: '2025-05-01' },
+          { title: 'Christi Himmelfahrt', start: '2025-05-29' },
+          { title: 'Pfingstmontag', start: '2025-06-09' },
+          { title: 'Fronleichnam', start: '2025-06-19' },
+          { title: 'Tag der Deutschen Einheit', start: '2025-10-03' },
+          { title: 'Reformationstag', start: '2025-10-31' },
+          { title: 'Allerheiligen', start: '2025-11-01' },
+          { title: 'Erster Weihnachtstag', start: '2025-12-25' },
+          { title: 'Zweiter Weihnachtstag', start: '2025-12-26' },
+          // Weitere Veranstaltungen & Feiertage können hier hinzugefügt werden.
+        ]
+      });
+      calendar.render();
+    });
+  </script>
+
+  <!-- JavaScript: Dark Mode und Sprachumschaltung -->
   <script>
     document.addEventListener("DOMContentLoaded", function() {
       // DARK MODE:
