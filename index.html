@@ -23,7 +23,7 @@
   <!-- Navigation -->
   <header class="bg-white dark:bg-gray-800 shadow-md fixed top-0 w-full z-50">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 py-4 flex justify-between items-center">
-      <!-- Logo und Überschrift als Link zu Start -->
+      <!-- Logo und Überschrift als Link -->
       <a href="/" class="flex items-center space-x-3">
         <img src="assets/wappen.png" alt="Wappen Geesthaven" class="h-12 w-auto">
         <h1 class="text-3xl font-bold text-blue-900 dark:text-blue-300">Geesthaven</h1>
@@ -92,8 +92,8 @@
   </main>
 
   <!-- Wellen-Video Section -->
-  <section id="waves" class="max-w-7xl mx-auto px-4 sm:px-6 mt-8">
-    <video autoplay loop muted playsinline class="w-full h-auto max-h-20 object-cover opacity-30">
+  <section id="waves" class="mt-16">
+    <video autoplay loop muted playsinline class="w-full h-auto object-cover opacity-40">
       <source src="assets/wellen.mp4" type="video/mp4">
     </video>
   </section>
@@ -129,7 +129,6 @@
       } else {
         darkButton.innerHTML = "🌑";
       }
-
       darkButton.addEventListener("click", function() {
         document.documentElement.classList.toggle("dark");
         const isDark = document.documentElement.classList.contains("dark");
@@ -140,7 +139,6 @@
       // SPRACHUMSCHALTUNG:
       let currentLang = localStorage.getItem('lang') || "de";
       const langButton = document.getElementById("langToggleButton");
-
       const translations = {
         de: {
           title: "Geesthaven – Entdecke die Stadt",
@@ -191,7 +189,6 @@
         document.title = translations[currentLang].title;
       }
       updateLanguage();
-
       langButton.addEventListener("click", function() {
         currentLang = (currentLang === "de") ? "en" : "de";
         localStorage.setItem('lang', currentLang);
