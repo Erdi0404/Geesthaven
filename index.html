@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title data-i18n-key="title">Geesthaven – Entdecke die Stadt</title>
   
-  <!-- Tailwind Dark Mode Setup -->
+  <!-- Tailwind Dark Mode Setup (class-based) -->
   <script>
     tailwind.config = { darkMode: 'class' };
   </script>
@@ -13,6 +13,7 @@
   <link rel="icon" href="assets/wappen.png" />
 </head>
 <body class="bg-gray-100 text-gray-800 font-sans dark:bg-gray-900 dark:text-gray-200">
+
   <!-- Navigation -->
   <header class="bg-white dark:bg-gray-800 shadow-md fixed top-0 w-full z-50">
     <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
@@ -60,6 +61,7 @@
         <a href="aktuelles.html" class="block text-blue-600 hover:underline" data-i18n-key="learn_more">Mehr erfahren →</a>
       </div>
     </div>
+
     <!-- Card: Digitales Rathaus -->
     <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-shadow duration-300">
       <img src="assets/rathaus.png" alt="Rathaus" class="w-full h-64 object-cover object-top">
@@ -69,43 +71,109 @@
         <a href="rathaus.html" class="block text-blue-600 hover:underline" data-i18n-key="learn_more">Mehr erfahren →</a>
       </div>
     </div>
+
+    <!-- Card: Leben & Wohnen -->
+    <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-shadow duration-300">
+      <img src="assets/life.png" alt="Leben in Geesthaven" class="w-full h-64 object-cover">
+      <div class="p-5">
+        <h3 class="text-xl font-semibold text-blue-800 mb-2" data-i18n-key="card_leben_title">Leben &amp; Wohnen</h3>
+        <p class="text-gray-600 mb-3" data-i18n-key="card_leben_desc">Informationen zu Wohnkultur, Bildung und Freizeit.</p>
+        <a href="leben.html" class="block text-blue-600 hover:underline" data-i18n-key="learn_more">Mehr erfahren →</a>
+      </div>
+    </div>
   </main>
 
-  <!-- Dark Mode & Language Toggle Script -->
+  <!-- Footer -->
+  <footer id="kontakt" class="bg-gray-900 text-gray-300 py-8">
+    <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2">
+      <div>
+        <h4 class="text-lg font-semibold mb-2" data-i18n-key="footer_title">Stadt Geesthaven</h4>
+        <address class="not-italic">
+          12345 Geesthaven<br>
+          Rathausplatz 1<br>
+          Tel: 01234 56789<br>
+          E-Mail: <a href="mailto:info@geesthaven.de" class="hover:underline">info@geesthaven.de</a>
+        </address>
+      </div>
+      <div class="md:text-right mt-4 md:mt-0">
+        <a href="impressum.html" class="block hover:underline">Impressum</a>
+        <a href="datenschutz.html" class="block hover:underline mt-1">Datenschutz</a>
+        <p class="mt-4 text-sm">&copy; 2025 Stadt Geesthaven</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- JavaScript für Dark Mode und Sprachumschaltung -->
   <script>
-    document.addEventListener("DOMContentLoaded", function () {
+    document.addEventListener("DOMContentLoaded", function() {
+      // Dark Mode Toggle
       const darkButton = document.getElementById("darkToggleButton");
-      darkButton.addEventListener("click", function () {
+      darkButton.addEventListener("click", function() {
         document.documentElement.classList.toggle("dark");
         darkButton.innerHTML = document.documentElement.classList.contains("dark") ? "☀️" : "🌑";
       });
 
-      // Language Toggle
+      // Sprachumschaltung
       const translations = {
-        de: { title: "Geesthaven – Entdecke die Stadt", hero_title: "Willkommen in Geesthaven" },
-        en: { title: "Geesthaven – Discover the City", hero_title: "Welcome to Geesthaven" }
+        "de": {
+          "title": "Geesthaven – Entdecke die Stadt",
+          "nav_start": "Start",
+          "nav_aktuelles": "Aktuelles",
+          "nav_geschichte": "Geschichte",
+          "nav_rathaus": "Rathaus",
+          "nav_leben": "Leben & Wohnen",
+          "nav_kontakt": "Kontakt",
+          "hero_title": "Willkommen in Geesthaven",
+          "card_aktuelles_title": "Aktuelles",
+          "card_aktuelles_desc": "Neuigkeiten und Veranstaltungen in Geesthaven.",
+          "card_rathaus_title": "Digitales Rathaus",
+          "card_rathaus_desc": "Formulare, Online-Termine und Verwaltungsinfos.",
+          "card_leben_title": "Leben & Wohnen",
+          "card_leben_desc": "Informationen zu Wohnkultur, Bildung und Freizeit.",
+          "learn_more": "Mehr erfahren →",
+          "footer_title": "Stadt Geesthaven"
+        },
+        "en": {
+          "title": "Geesthaven – Discover the City",
+          "nav_start": "Home",
+          "nav_aktuelles": "News",
+          "nav_geschichte": "History",
+          "nav_rathaus": "City Hall",
+          "nav_leben": "Living & Housing",
+          "nav_kontakt": "Contact",
+          "hero_title": "Welcome to Geesthaven",
+          "card_aktuelles_title": "News & Events",
+          "card_aktuelles_desc": "News and events in Geesthaven.",
+          "card_rathaus_title": "Digital City Hall",
+          "card_rathaus_desc": "Forms, online appointments, and administrative info.",
+          "card_leben_title": "Living & Housing",
+          "card_leben_desc": "Information on housing, education, and leisure.",
+          "learn_more": "Learn more →",
+          "footer_title": "City of Geesthaven"
+        }
       };
 
       let currentLang = "de";
       const langButton = document.getElementById("langToggleButton");
 
       function updateLanguage() {
-        document.querySelectorAll("[data-i18n-key]").forEach(el => {
+        document.querySelectorAll("[data-i18n-key]").forEach(function(el) {
           const key = el.getAttribute("data-i18n-key");
-          if (translations[currentLang][key]) {
+          if (translations[currentLang] && translations[currentLang][key]) {
             el.innerHTML = translations[currentLang][key];
           }
         });
-        document.title = translations[currentLang]["title"];
+        document.title = translations[currentLang].title;
       }
 
-      langButton.addEventListener("click", function () {
-        currentLang = currentLang === "de" ? "en" : "de";
+      langButton.addEventListener("click", function() {
+        currentLang = (currentLang === "de") ? "en" : "de";
+        // Button-Text zeigt immer den Code der jeweils anderen Sprache an
         langButton.innerHTML = currentLang === "de" ? "EN" : "DE";
         updateLanguage();
       });
 
-      updateLanguage();
+      updateLanguage(); // Initialer Sprachstatus
     });
   </script>
 </body>
