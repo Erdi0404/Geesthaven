@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Geesthaven - Entdecke die Stadt</title>
+  <title>Geesthaven – Entdecke die Stadt</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="icon" href="assets/favicon.png" />
 </head>
@@ -11,132 +11,76 @@
 
   <!-- Navigation -->
   <header class="bg-white shadow-md fixed top-0 w-full z-50">
-    <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
       <div class="flex items-center space-x-3">
-        <img src="assets/wappen.png" alt="Wappen Geesthaven" class="h-10 w-auto">
-        <h1 class="text-2xl font-bold text-blue-900">Geesthaven</h1>
+        <img src="assets/wappen.png" alt="Wappen Geesthaven" class="h-12 w-auto">
+        <h1 class="text-3xl font-bold text-blue-900">Geesthaven</h1>
       </div>
-      <nav class="space-x-6 text-sm font-medium text-gray-700">
-        <a href="#start" class="hover:text-blue-700">Start</a>
-        <a href="#aktuelles" class="hover:text-blue-700">Aktuelles</a>
-        <a href="#geschichte" class="hover:text-blue-700">Geschichte</a>
-        <a href="#rathaus" class="hover:text-blue-700">Rathaus</a>
-        <a href="#leben" class="hover:text-blue-700">Leben & Wohnen</a>
-        <a href="#sehenswuerdigkeiten" class="hover:text-blue-700">Sehenswürdigkeiten</a>
-        <a href="#kontakt" class="hover:text-blue-700">Kontakt</a>
+      <nav class="space-x-6 text-md font-medium text-gray-700">
+        <a href="index.html" class="hover:text-blue-700 transition duration-300">Start</a>
+        <a href="aktuelles.html" class="hover:text-blue-700 transition duration-300">Aktuelles</a>
+        <a href="geschichte.html" class="hover:text-blue-700 transition duration-300">Geschichte</a>
+        <a href="rathaus.html" class="hover:text-blue-700 transition duration-300">Rathaus</a>
+        <a href="leben.html" class="hover:text-blue-700 transition duration-300">Leben &amp; Wohnen</a>
+        <a href="kontakt.html" class="hover:text-blue-700 transition duration-300">Kontakt</a>
       </nav>
     </div>
   </header>
 
   <!-- Hero Section -->
-  <section id="start" class="relative bg-blue-50 pt-20">
-    <img src="assets/hero.jpg" alt="Geesthaven Panorama" class="w-full h-80 object-cover">
-    <div class="absolute top-20 left-0 w-full h-80 bg-blue-900 bg-opacity-40 flex items-center justify-center">
-      <h2 class="text-white text-4xl md:text-5xl font-bold drop-shadow-lg">Willkommen in Geesthaven</h2>
+  <section id="hero" class="relative bg-blue-50 pt-24">
+    <img src="assets/hero.jpg" alt="Geesthaven Panorama" class="w-full h-96 object-cover">
+    <div class="absolute inset-0 bg-blue-900 bg-opacity-50 flex items-center justify-center">
+      <h2 class="text-white text-5xl font-bold drop-shadow-xl">Willkommen in Geesthaven</h2>
     </div>
   </section>
 
-  <!-- Main Cards Section -->
-  <main class="max-w-7xl mx-auto p-6 grid gap-6 md:grid-cols-3 mt-10">
-    <!-- Card 1: Aktuelles -->
-    <div id="aktuelles" class="bg-white rounded-2xl shadow-md overflow-hidden">
-      <img src="assets/news.jpg" alt="Aktuelles" class="w-full h-48 object-cover">
-      <div class="p-4">
-        <h3 class="text-lg font-semibold text-blue-800 mb-2">Aktuelles aus Geesthaven</h3>
-        <p class="text-sm text-gray-600">Neuigkeiten, Veranstaltungen und Mitteilungen aus der Stadt.</p>
-        <a href="#aktuelles-details" class="text-blue-600 text-sm font-medium mt-2 inline-block hover:underline">Mehr erfahren →</a>
+  <!-- Main Content Section -->
+  <main class="max-w-7xl mx-auto px-6 py-12 grid gap-8 md:grid-cols-3">
+    <!-- Card: Aktuelles -->
+    <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-shadow duration-300">
+      <img src="assets/news.jpg" alt="Aktuelles" class="w-full h-64 object-cover">
+      <div class="p-5">
+        <h3 class="text-xl font-semibold text-blue-800 mb-2">Aktuelles</h3>
+        <p class="text-gray-600 mb-3">Neuigkeiten, Veranstaltungen und Mitteilungen aus Geesthaven.</p>
+        <a href="aktuelles.html" class="block text-blue-600 hover:underline">Mehr erfahren &rarr;</a>
       </div>
     </div>
-
-    <!-- Card 2: Digitales Rathaus -->
-    <div id="rathaus" class="bg-white rounded-2xl shadow-md overflow-hidden">
-      <img src="assets/rathaus.jpg" alt="Rathaus" class="w-full h-48 object-cover">
-      <div class="p-4">
-        <h3 class="text-lg font-semibold text-blue-800 mb-2">Digitales Rathaus</h3>
-        <p class="text-sm text-gray-600">Zugriff auf Formulare, Dienstleistungen und Verwaltungsinfos.</p>
-        <a href="#rathaus-details" class="text-blue-600 text-sm font-medium mt-2 inline-block hover:underline">Mehr erfahren →</a>
+    <!-- Card: Digitales Rathaus -->
+    <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-shadow duration-300">
+      <img src="assets/rathaus.jpg" alt="Digitales Rathaus" class="w-full h-64 object-cover">
+      <div class="p-5">
+        <h3 class="text-xl font-semibold text-blue-800 mb-2">Digitales Rathaus</h3>
+        <p class="text-gray-600 mb-3">Zugriff auf Formulare, Dienstleistungen und Verwaltungsinfos.</p>
+        <a href="rathaus.html" class="block text-blue-600 hover:underline">Mehr erfahren &rarr;</a>
       </div>
     </div>
-
-    <!-- Card 3: Leben in Geesthaven -->
-    <div id="leben" class="bg-white rounded-2xl shadow-md overflow-hidden">
-      <img src="assets/life.jpg" alt="Leben in Geesthaven" class="w-full h-48 object-cover">
-      <div class="p-4">
-        <h3 class="text-lg font-semibold text-blue-800 mb-2">Leben in Geesthaven</h3>
-        <p class="text-sm text-gray-600">Bildung, Freizeit, Gesundheit und Wohnen in unserer Stadt.</p>
-        <a href="#leben-details" class="text-blue-600 text-sm font-medium mt-2 inline-block hover:underline">Mehr erfahren →</a>
+    <!-- Card: Leben & Wohnen -->
+    <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-shadow duration-300">
+      <img src="assets/life.jpg" alt="Leben in Geesthaven" class="w-full h-64 object-cover">
+      <div class="p-5">
+        <h3 class="text-xl font-semibold text-blue-800 mb-2">Leben &amp; Wohnen</h3>
+        <p class="text-gray-600 mb-3">Bildung, Freizeit, Gesundheit und Wohnmöglichkeiten in unserer Stadt.</p>
+        <a href="leben.html" class="block text-blue-600 hover:underline">Mehr erfahren &rarr;</a>
       </div>
     </div>
   </main>
 
-  <!-- Zusatz: Geschichte von Geesthaven -->
-  <section id="geschichte" class="max-w-7xl mx-auto p-6 mt-10 bg-white rounded-2xl shadow-md">
-    <h2 class="text-2xl font-bold text-blue-900 mb-4">Geschichte von Geesthaven</h2>
-    <p class="text-gray-700 mb-4">
-      Geesthaven hat eine reiche Historie, die bis ins Mittelalter zurückreicht. Ursprünglich als kleines Fischerdorf gegründet, entwickelte sich die Stadt über die Jahrhunderte zu einem bedeutenden Handelszentrum an der Küste.
-    </p>
-    <p class="text-gray-700">
-      Mit Blick auf die Vergangenheit lässt sich erkennen, wie Tradition und Fortschritt harmonisch miteinander verbunden werden. Historische Bauten und enge Gassen erzählen von längst vergangenen Zeiten, während moderne Einrichtungen das städtische Leben prägen.
-    </p>
-  </section>
-
-  <!-- Zusatz: Sehenswürdigkeiten -->
-  <section id="sehenswuerdigkeiten" class="max-w-7xl mx-auto p-6 mt-10 bg-white rounded-2xl shadow-md">
-    <h2 class="text-2xl font-bold text-blue-900 mb-4">Sehenswürdigkeiten in Geesthaven</h2>
-    <p class="text-gray-700 mb-4">
-      Von historischen Fachwerkhäusern über prunkvolle Kirchen bis hin zu modernen Kulturzentren – Geesthaven bietet eine beeindruckende Mischung an Sehenswürdigkeiten. Jede Ecke der Stadt hat ihren eigenen Charme und erzählt eine einzigartige Geschichte.
-    </p>
-    <p class="text-gray-700">
-      Erkunden Sie malerische Altstadtgassen, besuchen Sie Museen oder genießen Sie den Blick vom Panorama-Hügel – Geesthaven überrascht auf vielen Ebenen.
-    </p>
-  </section>
-
-  <!-- Detailbereiche -->
-  <section id="aktuelles-details" class="max-w-4xl mx-auto mt-16 px-6">
-    <h2 class="text-2xl font-bold text-blue-900 mb-4">Details: Aktuelles</h2>
-    <p class="text-gray-700 mb-4">
-      Hier finden Sie alle aktuellen Meldungen und Hinweise aus Geesthaven. Bleiben Sie informiert über bevorstehende Veranstaltungen, neue Projekte und offizielle Mitteilungen der Stadtverwaltung.
-    </p>
-    <p class="text-gray-700">
-      Unsere Berichterstattung umfasst auch lokale Initiativen, die das Stadtbild und das Gemeinschaftsleben nachhaltig prägen.
-    </p>
-  </section>
-
-  <section id="rathaus-details" class="max-w-4xl mx-auto mt-16 px-6">
-    <h2 class="text-2xl font-bold text-blue-900 mb-4">Details: Digitales Rathaus</h2>
-    <p class="text-gray-700 mb-4">
-      Unser digitales Rathaus bietet Ihnen einen schnellen Zugang zu Verwaltungsangeboten. Laden Sie Formulare herunter, buchen Sie Termine und informieren Sie sich über aktuelle Verwaltungsmitteilungen.
-    </p>
-    <p class="text-gray-700">
-      Die Digitalisierung der Prozesse hilft dabei, Ihre Anliegen effizienter zu bearbeiten und sorgt für eine zeitgemäße Verwaltung.
-    </p>
-  </section>
-
-  <section id="leben-details" class="max-w-4xl mx-auto mt-16 px-6">
-    <h2 class="text-2xl font-bold text-blue-900 mb-4">Details: Leben in Geesthaven</h2>
-    <p class="text-gray-700 mb-4">
-      Geesthaven bietet eine hohe Lebensqualität mit einem umfangreichen Freizeit-, Bildungs- und Kulturangebot. Genießen Sie grüne Parks, spannende Veranstaltungen und eine lebendige Gemeinschaft.
-    </p>
-    <p class="text-gray-700">
-      Die Mischung aus Tradition und Moderne macht das Leben in Geesthaven einzigartig – ob für Familien, Studierende oder Senioren.
-    </p>
-  </section>
-
   <!-- Footer -->
-  <footer id="kontakt" class="bg-gray-900 text-gray-300 mt-16">
-    <div class="max-w-7xl mx-auto px-4 py-8 grid md:grid-cols-2 gap-6">
+  <footer id="kontakt" class="bg-gray-900 text-gray-300 py-8">
+    <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2">
       <div>
         <h4 class="text-lg font-semibold mb-2">Stadt Geesthaven</h4>
-        <p>
+        <address class="not-italic">
           12345 Geesthaven<br>
           Rathausplatz 1<br>
           Tel: 01234 56789<br>
-          E-Mail: info@geesthaven.de
-        </p>
+          E-Mail: <a href="mailto:info@geesthaven.de" class="hover:underline">info@geesthaven.de</a>
+        </address>
       </div>
-      <div class="md:text-right">
-        <a href="#impressum" class="block hover:underline">Impressum</a>
-        <a href="#datenschutz" class="block hover:underline">Datenschutz</a>
+      <div class="md:text-right mt-4 md:mt-0">
+        <a href="impressum.html" class="block hover:underline">Impressum</a>
+        <a href="datenschutz.html" class="block hover:underline mt-1">Datenschutz</a>
         <p class="mt-4 text-sm">&copy; 2025 Stadt Geesthaven</p>
       </div>
     </div>
