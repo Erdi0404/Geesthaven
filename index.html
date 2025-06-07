@@ -11,6 +11,13 @@
   </script>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="icon" href="assets/wappen.png" />
+  
+  <style>
+    /* Optional: Einfache mobile Navigation optimieren */
+    @media (max-width: 768px) {
+      nav { display: none; }
+    }
+  </style>
 </head>
 <body class="bg-gray-100 text-gray-800 font-sans dark:bg-gray-900 dark:text-gray-200">
   <!-- Navigation -->
@@ -20,8 +27,9 @@
         <img src="assets/wappen.png" alt="Wappen Geesthaven" class="h-12 w-auto">
         <h1 class="text-3xl font-bold text-blue-900 dark:text-blue-300">Geesthaven</h1>
       </div>
+      <!-- Start-Link verweist auf die Root, damit alle Versionen identisch laden -->
       <nav class="hidden md:flex space-x-6 text-md font-medium text-gray-700 dark:text-gray-300">
-        <a href="index.html" class="hover:text-blue-700 transition duration-300" data-i18n-key="nav_start">Start</a>
+        <a href="/" class="hover:text-blue-700 transition duration-300" data-i18n-key="nav_start">Start</a>
         <a href="aktuelles.html" class="hover:text-blue-700 transition duration-300" data-i18n-key="nav_aktuelles">Aktuelles</a>
         <a href="geschichte.html" class="hover:text-blue-700 transition duration-300" data-i18n-key="nav_geschichte">Geschichte</a>
         <a href="rathaus.html" class="hover:text-blue-700 transition duration-300" data-i18n-key="nav_rathaus">Rathaus</a>
@@ -31,7 +39,7 @@
       <div class="flex items-center space-x-2">
         <!-- Dark Mode Toggle Button (Icons: 🌑 = Light, ☀️ = Dark) -->
         <button id="darkToggleButton" class="p-2 rounded-full bg-gray-300 dark:bg-gray-700 text-gray-800 dark:text-gray-100 transition-colors duration-300">
-          🌑
+          <!-- Das Icon wird beim Laden gesetzt -->
         </button>
         <!-- Language Toggle Button -->
         <button id="langToggleButton" class="p-2 rounded-full bg-green-200 dark:bg-green-600 text-green-800 dark:text-green-100 transition-colors duration-300">
@@ -71,7 +79,7 @@
       </div>
     </div>
 
-    <!-- Card: Leben & Wohnen -->
+    <!-- Card: Leben & Wohnen (soll immer sichtbar bleiben) -->
     <div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-shadow duration-300">
       <img src="assets/life.png" alt="Leben in Geesthaven" class="w-full h-64 object-cover">
       <div class="p-5">
@@ -102,17 +110,28 @@
     </div>
   </footer>
 
-  <!-- Dark Mode & Language Toggle Script -->
+  <!-- JavaScript: Dark Mode & Sprachumschaltung -->
   <script>
     document.addEventListener("DOMContentLoaded", function() {
-      // Dark Mode Toggle
+      // DARK MODE: Überprüfe, ob eine Einstellung in localStorage vorliegt
       const darkButton = document.getElementById("darkToggleButton");
+      if (localStorage.getItem('darkMode') === 'true') {
+        document.documentElement.classList.add("dark");
+        darkButton.innerHTML = "☀️"; // Dark mode aktiv → Icon für Light Mode
+      } else {
+        darkButton.innerHTML = "🌑"; // Default: Light Mode
+      }
+
       darkButton.addEventListener("click", function() {
         document.documentElement.classList.toggle("dark");
-        darkButton.innerHTML = document.documentElement.classList.contains("dark") ? "☀️" : "🌑";
+        const isDark = document.documentElement.classList.contains("dark");
+        // Speichere den Zustand
+        localStorage.setItem('darkMode', isDark ? 'true' : 'false');
+        darkButton.innerHTML = isDark ? "☀️" : "🌑";
+        console.log("Dark mode is now:", isDark);
       });
 
-      // Sprachumschaltung
+      // SPRACHUMSCHALTUNG:
       const translations = {
         de: {
           title: "Geesthaven – Entdecke die Stadt",
@@ -167,12 +186,12 @@
 
       langButton.addEventListener("click", function() {
         currentLang = (currentLang === "de") ? "en" : "de";
-        // Button-Text zeigt den Sprachcode der jeweils anderen Sprache
+        // Der Button zeigt jeweils den Code der jeweils anderen Sprache an
         langButton.innerHTML = (currentLang === "de") ? "EN" : "DE";
         updateLanguage();
       });
 
-      updateLanguage();
+      updateLanguage(); // initialer Sprachstatus
     });
   </script>
 </body>
