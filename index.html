@@ -4,6 +4,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title data-i18n-key="title">Geesthaven – Entdecke die Stadt</title>
+  
+  <!-- Tailwind Dark Mode Setup -->
   <script>
     tailwind.config = { darkMode: 'class' };
   </script>
@@ -28,8 +30,8 @@
       </nav>
       <div class="flex items-center space-x-2">
         <!-- Dark Mode Toggle Button -->
-        <button id="darkToggleButton" class="p-2 rounded-full bg-blue-200 dark:bg-blue-600 text-blue-800 dark:text-blue-100 transition-colors duration-300">
-          🌙
+        <button id="darkToggleButton" class="p-2 rounded-full bg-gray-300 dark:bg-gray-700 text-gray-800 dark:text-gray-100 transition-colors duration-300">
+          🌑
         </button>
         <!-- Language Toggle Button -->
         <button id="langToggleButton" class="p-2 rounded-full bg-green-200 dark:bg-green-600 text-green-800 dark:text-green-100 transition-colors duration-300">
@@ -67,30 +69,44 @@
         <a href="rathaus.html" class="block text-blue-600 hover:underline" data-i18n-key="learn_more">Mehr erfahren →</a>
       </div>
     </div>
-    <!-- Card: Leben & Wohnen -->
-    <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-shadow duration-300">
-      <img src="assets/life.png" alt="Leben in Geesthaven" class="w-full h-64 object-cover">
-      <div class="p-5">
-        <h3 class="text-xl font-semibold text-blue-800 mb-2" data-i18n-key="card_leben_title">Leben &amp; Wohnen</h3>
-        <p class="text-gray-600 mb-3" data-i18n-key="card_leben_desc">Informationen zu Wohnkultur, Bildung und Freizeit.</p>
-        <a href="leben.html" class="block text-blue-600 hover:underline" data-i18n-key="learn_more">Mehr erfahren →</a>
-      </div>
-    </div>
   </main>
 
-  <!-- Dark Mode Script -->
+  <!-- Dark Mode & Language Toggle Script -->
   <script>
-    document.getElementById("darkToggleButton").addEventListener("click", function() {
-      document.documentElement.classList.toggle("dark");
-      this.innerHTML = document.documentElement.classList.contains("dark") ? "☀" : "🌙";
+    document.addEventListener("DOMContentLoaded", function () {
+      const darkButton = document.getElementById("darkToggleButton");
+      darkButton.addEventListener("click", function () {
+        document.documentElement.classList.toggle("dark");
+        darkButton.innerHTML = document.documentElement.classList.contains("dark") ? "☀️" : "🌑";
+      });
+
+      // Language Toggle
+      const translations = {
+        de: { title: "Geesthaven – Entdecke die Stadt", hero_title: "Willkommen in Geesthaven" },
+        en: { title: "Geesthaven – Discover the City", hero_title: "Welcome to Geesthaven" }
+      };
+
+      let currentLang = "de";
+      const langButton = document.getElementById("langToggleButton");
+
+      function updateLanguage() {
+        document.querySelectorAll("[data-i18n-key]").forEach(el => {
+          const key = el.getAttribute("data-i18n-key");
+          if (translations[currentLang][key]) {
+            el.innerHTML = translations[currentLang][key];
+          }
+        });
+        document.title = translations[currentLang]["title"];
+      }
+
+      langButton.addEventListener("click", function () {
+        currentLang = currentLang === "de" ? "en" : "de";
+        langButton.innerHTML = currentLang === "de" ? "EN" : "DE";
+        updateLanguage();
+      });
+
+      updateLanguage();
     });
   </script>
-
-  <!-- Language Toggle Script -->
-  <script>
-    const translations = {
-      "de": { "title": "Geesthaven – Entdecke die Stadt", "nav_start": "Start", "hero_title": "Willkommen in Geesthaven" },
-      "en": { "title": "Geesthaven – Discover the City", "nav_start": "Home", "hero_title": "Welcome to Geesthaven" }
-    };
-    let lang = "de";
-    document.getElementById("langToggleButton").addEventListener("click", function()
+</body>
+</html>
