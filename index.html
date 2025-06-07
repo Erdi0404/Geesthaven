@@ -36,9 +36,10 @@
         <a href="rathaus.html" class="hover:text-blue-700 transition duration-300" data-i18n-key="nav_rathaus">Rathaus</a>
         <a href="leben.html" class="hover:text-blue-700 transition duration-300" data-i18n-key="nav_leben">Leben &amp; Wohnen</a>
         <a href="kontakt.html" class="hover:text-blue-700 transition duration-300" data-i18n-key="nav_kontakt">Kontakt</a>
+        <a href="flyer.html" class="hover:text-blue-700 transition duration-300" data-i18n-key="nav_flyer">Flyer</a>
       </nav>
       <div class="flex items-center space-x-2">
-        <!-- Dark Mode Toggle Button -->
+        <!-- Dark Mode Toggle Button (Icons: 🌑 = Light, ☀️ = Dark) -->
         <button id="darkToggleButton" class="p-2 rounded-full bg-gray-300 dark:bg-gray-700 text-gray-800 dark:text-gray-100 transition-colors duration-300">
           <!-- Icon wird beim Laden gesetzt -->
         </button>
@@ -91,12 +92,8 @@
     </div>
   </main>
 
-  <!-- Footer mit Wellen-Video als Hintergrund -->
+  <!-- Footer -->
   <footer id="kontakt" class="relative bg-gray-900 text-gray-300 py-8">
-    <!-- Hintergrundvideo: Füllt den Footer, wird im Ping-Pong-Modus abgespielt -->
-    <video id="wavesVideo" autoplay muted playsinline class="absolute inset-0 w-full h-full object-cover opacity-40">
-      <source src="assets/wellen.mp4" type="video/mp4">
-    </video>
     <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 grid md:grid-cols-2">
       <div>
         <h4 class="text-lg font-semibold mb-2" data-i18n-key="footer_title">Stadt Geesthaven</h4>
@@ -115,7 +112,7 @@
     </div>
   </footer>
 
-  <!-- JavaScript: Dark Mode, Sprachumschaltung und Ping-Pong Video-Wiedergabe -->
+  <!-- JavaScript: Dark Mode, Sprachumschaltung -->
   <script>
     document.addEventListener("DOMContentLoaded", function() {
       // DARK MODE:
@@ -145,6 +142,7 @@
           nav_rathaus: "Rathaus",
           nav_leben: "Leben & Wohnen",
           nav_kontakt: "Kontakt",
+          nav_flyer: "Flyer",
           hero_title: "Willkommen in Geesthaven",
           card_aktuelles_title: "Aktuelles",
           card_aktuelles_desc: "Neuigkeiten und Veranstaltungen in Geesthaven.",
@@ -163,6 +161,7 @@
           nav_rathaus: "City Hall",
           nav_leben: "Living & Housing",
           nav_kontakt: "Contact",
+          nav_flyer: "Flyer",
           hero_title: "Welcome to Geesthaven",
           card_aktuelles_title: "News & Events",
           card_aktuelles_desc: "News and events in Geesthaven.",
@@ -191,26 +190,6 @@
         langButton.innerHTML = (currentLang === "de") ? "EN" : "DE";
         updateLanguage();
       });
-
-      // PING-PONG WIEDERGABE FÜR DAS WELLEN-VIDEO:
-      const wavesVideo = document.getElementById("wavesVideo");
-      if (wavesVideo) {
-        // Entferne das loop-Attribut, falls vorhanden
-        wavesVideo.removeAttribute("loop");
-        wavesVideo.playbackRate = 1; // Start vorwärts
-        wavesVideo.addEventListener("timeupdate", function() {
-          const tolerance = 0.1; // kleine Toleranz
-          if (wavesVideo.playbackRate > 0 && wavesVideo.currentTime >= wavesVideo.duration - tolerance) {
-            wavesVideo.pause();
-            wavesVideo.playbackRate = -1;
-            wavesVideo.play();
-          } else if (wavesVideo.playbackRate < 0 && wavesVideo.currentTime <= tolerance) {
-            wavesVideo.pause();
-            wavesVideo.playbackRate = 1;
-            wavesVideo.play();
-          }
-        });
-      }
     });
   </script>
 </body>
