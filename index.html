@@ -38,7 +38,7 @@
         <a href="kontakt.html" class="hover:text-blue-700 transition duration-300" data-i18n-key="nav_kontakt">Kontakt</a>
       </nav>
       <div class="flex items-center space-x-2">
-        <!-- Dark Mode Toggle Button (Icons: 🌑 = Light, ☀️ = Dark) -->
+        <!-- Dark Mode Toggle Button -->
         <button id="darkToggleButton" class="p-2 rounded-full bg-gray-300 dark:bg-gray-700 text-gray-800 dark:text-gray-100 transition-colors duration-300">
           <!-- Icon wird beim Laden gesetzt -->
         </button>
@@ -91,18 +91,13 @@
     </div>
   </main>
 
-  <!-- Wellen-Video Section -->
-  <section id="waves" class="mt-16">
-    <!-- Das Video erstreckt sich von ganz links nach rechts, ist kleiner (max-h-16) und dezent transparent.
-         Das "loop" Attribut wurde entfernt, damit wir per JavaScript die Ping-Pong-Wiedergabe realisieren können. -->
-    <video autoplay muted playsinline class="w-full h-auto max-h-16 object-cover opacity-40">
+  <!-- Footer mit Wellen-Video als Hintergrund -->
+  <footer id="kontakt" class="relative bg-gray-900 text-gray-300 py-8">
+    <!-- Hintergrundvideo: Füllt den Footer, wird im Ping-Pong-Modus abgespielt -->
+    <video id="wavesVideo" autoplay muted playsinline class="absolute inset-0 w-full h-full object-cover opacity-40">
       <source src="assets/wellen.mp4" type="video/mp4">
     </video>
-  </section>
-
-  <!-- Footer -->
-  <footer id="kontakt" class="bg-gray-900 text-gray-300 py-8">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 grid md:grid-cols-2">
+    <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 grid md:grid-cols-2">
       <div>
         <h4 class="text-lg font-semibold mb-2" data-i18n-key="footer_title">Stadt Geesthaven</h4>
         <address class="not-italic">
@@ -120,7 +115,7 @@
     </div>
   </footer>
 
-  <!-- JavaScript: Dark Mode, Sprachumschaltung und Ping-Pong Video Wiedergabe -->
+  <!-- JavaScript: Dark Mode, Sprachumschaltung und Ping-Pong Video-Wiedergabe -->
   <script>
     document.addEventListener("DOMContentLoaded", function() {
       // DARK MODE:
@@ -131,7 +126,6 @@
       } else {
         darkButton.innerHTML = "🌑";
       }
-
       darkButton.addEventListener("click", function() {
         document.documentElement.classList.toggle("dark");
         const isDark = document.documentElement.classList.contains("dark");
@@ -142,7 +136,6 @@
       // SPRACHUMSCHALTUNG:
       let currentLang = localStorage.getItem('lang') || "de";
       const langButton = document.getElementById("langToggleButton");
-
       const translations = {
         de: {
           title: "Geesthaven – Entdecke die Stadt",
@@ -181,7 +174,6 @@
           footer_title: "City of Geesthaven"
         }
       };
-
       langButton.innerHTML = (currentLang === "de") ? "EN" : "DE";
       function updateLanguage() {
         document.querySelectorAll("[data-i18n-key]").forEach(function(el) {
@@ -201,18 +193,18 @@
       });
 
       // PING-PONG WIEDERGABE FÜR DAS WELLEN-VIDEO:
-      const wavesVideo = document.querySelector("#waves video");
-      if(wavesVideo) {
-        // Start mit normaler Geschwindigkeit (vorwärts)
-        wavesVideo.playbackRate = 1;
+      const wavesVideo = document.getElementById("wavesVideo");
+      if (wavesVideo) {
+        // Entferne das loop-Attribut, falls vorhanden
+        wavesVideo.removeAttribute("loop");
+        wavesVideo.playbackRate = 1; // Start vorwärts
         wavesVideo.addEventListener("timeupdate", function() {
-          const tolerance = 0.1; // kleine Toleranz, um Rutschen zu vermeiden
-          if(wavesVideo.playbackRate > 0 && wavesVideo.currentTime >= wavesVideo.duration - tolerance) {
+          const tolerance = 0.1; // kleine Toleranz
+          if (wavesVideo.playbackRate > 0 && wavesVideo.currentTime >= wavesVideo.duration - tolerance) {
             wavesVideo.pause();
             wavesVideo.playbackRate = -1;
             wavesVideo.play();
-          }
-          if(wavesVideo.playbackRate < 0 && wavesVideo.currentTime <= tolerance) {
+          } else if (wavesVideo.playbackRate < 0 && wavesVideo.currentTime <= tolerance) {
             wavesVideo.pause();
             wavesVideo.playbackRate = 1;
             wavesVideo.play();
