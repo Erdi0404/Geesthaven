@@ -11,7 +11,7 @@
   </script>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="icon" href="assets/wappen.png" />
-
+  
   <!-- FullCalendar CSS -->
   <link href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.css" rel="stylesheet">
 
@@ -19,6 +19,18 @@
     /* Optional: Einfache mobile Navigation optimieren */
     @media (max-width: 768px) {
       nav { display: none; }
+    }
+    /* Kalender-Container styling: kleine Box in der rechten unteren Ecke */
+    #calendar {
+      position: fixed;
+      bottom: 10px;
+      right: 10px;
+      width: 300px;
+      background: white;
+      border: 1px solid #ddd;
+      padding: 5px;
+      border-radius: 5px;
+      z-index: 1000;
     }
   </style>
 </head>
@@ -42,7 +54,7 @@
         <a href="flyer.html" class="hover:text-blue-700 transition duration-300" data-i18n-key="nav_flyer">Flyer</a>
       </nav>
       <div class="flex items-center space-x-2">
-        <!-- Dark Mode Toggle Button (Icons: 🌑 = Light, ☀️ = Dark) -->
+        <!-- Dark Mode Toggle Button -->
         <button id="darkToggleButton" class="p-2 rounded-full bg-gray-300 dark:bg-gray-700 text-gray-800 dark:text-gray-100 transition-colors duration-300">
           <!-- Icon wird beim Laden gesetzt -->
         </button>
@@ -60,12 +72,6 @@
     <div class="absolute inset-0 bg-blue-900 bg-opacity-50 flex items-center justify-center">
       <h2 class="text-white text-5xl font-bold drop-shadow-xl" data-i18n-key="hero_title">Willkommen in Geesthaven</h2>
     </div>
-  </section>
-
-  <!-- Kalender Section für Veranstaltungen & Feiertage -->
-  <section id="events-calendar" class="max-w-7xl mx-auto px-4 sm:px-6 py-12">
-    <h2 class="text-3xl font-bold text-blue-900 dark:text-blue-300 mb-6">Aktuelle Veranstaltungen &amp; Feiertage</h2>
-    <div id="calendar"></div>
   </section>
 
   <!-- Main Cards Section -->
@@ -121,16 +127,26 @@
     </div>
   </footer>
 
+  <!-- Kleine Kalender-Box in der rechten unteren Ecke -->
+  <div id="calendar"></div>
+
   <!-- FullCalendar JS -->
   <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js"></script>
-  <!-- Initialize FullCalendar -->
   <script>
     document.addEventListener('DOMContentLoaded', function() {
       var calendarEl = document.getElementById('calendar');
       var calendar = new FullCalendar.Calendar(calendarEl, {
         initialView: 'dayGridMonth',
         locale: 'de',
-        height: 600,
+        headerToolbar: {
+          left: 'today',
+          center: '',
+          right: ''
+        },
+        height: 'auto',
+        buttonText: {
+          today: 'heute'
+        },
         events: [
           { title: 'Neujahr', start: '2025-01-01', color: '#dc2626' },
           { title: 'Karfreitag', start: '2025-04-18' },
@@ -142,9 +158,8 @@
           { title: 'Tag der Deutschen Einheit', start: '2025-10-03' },
           { title: 'Reformationstag', start: '2025-10-31' },
           { title: 'Allerheiligen', start: '2025-11-01' },
-          { title: 'Erster Weihnachtstag', start: '2025-12-25' },
-          { title: 'Zweiter Weihnachtstag', start: '2025-12-26' },
-          // Weitere Veranstaltungen & Feiertage können hier hinzugefügt werden.
+          { title: '1. Weihnachtstag', start: '2025-12-25' },
+          { title: '2. Weihnachtstag', start: '2025-12-26' }
         ]
       });
       calendar.render();
@@ -182,14 +197,6 @@
           nav_leben: "Leben & Wohnen",
           nav_kontakt: "Kontakt",
           nav_flyer: "Flyer",
-          hero_title: "Willkommen in Geesthaven",
-          card_aktuelles_title: "Aktuelles",
-          card_aktuelles_desc: "Neuigkeiten und Veranstaltungen in Geesthaven.",
-          card_rathaus_title: "Digitales Rathaus",
-          card_rathaus_desc: "Formulare, Online-Termine und Verwaltungsinfos.",
-          card_leben_title: "Leben & Wohnen",
-          card_leben_desc: "Informationen zu Wohnkultur, Bildung und Freizeit.",
-          learn_more: "Mehr erfahren →",
           footer_title: "Stadt Geesthaven"
         },
         en: {
@@ -201,14 +208,6 @@
           nav_leben: "Living & Housing",
           nav_kontakt: "Contact",
           nav_flyer: "Flyer",
-          hero_title: "Welcome to Geesthaven",
-          card_aktuelles_title: "News & Events",
-          card_aktuelles_desc: "News and events in Geesthaven.",
-          card_rathaus_title: "Digital City Hall",
-          card_rathaus_desc: "Forms, online appointments, and administrative info.",
-          card_leben_title: "Living & Housing",
-          card_leben_desc: "Information on housing, education, and leisure.",
-          learn_more: "Learn more →",
           footer_title: "City of Geesthaven"
         }
       };
