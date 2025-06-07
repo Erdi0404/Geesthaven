@@ -23,7 +23,7 @@
   <!-- Navigation -->
   <header class="bg-white dark:bg-gray-800 shadow-md fixed top-0 w-full z-50">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 py-4 flex justify-between items-center">
-      <!-- Hier werden Logo und Überschrift in einen Link gewrappt -->
+      <!-- Logo und Überschrift als Link zu Start -->
       <a href="/" class="flex items-center space-x-3">
         <img src="assets/wappen.png" alt="Wappen Geesthaven" class="h-12 w-auto">
         <h1 class="text-3xl font-bold text-blue-900 dark:text-blue-300">Geesthaven</h1>
@@ -40,7 +40,7 @@
       <div class="flex items-center space-x-2">
         <!-- Dark Mode Toggle Button (Icons: 🌑 = Light, ☀️ = Dark) -->
         <button id="darkToggleButton" class="p-2 rounded-full bg-gray-300 dark:bg-gray-700 text-gray-800 dark:text-gray-100 transition-colors duration-300">
-          <!-- Das Icon wird beim Laden gesetzt -->
+          <!-- Icon wird beim Laden gesetzt -->
         </button>
         <!-- Language Toggle Button -->
         <button id="langToggleButton" class="p-2 rounded-full bg-green-200 dark:bg-green-600 text-green-800 dark:text-green-100 transition-colors duration-300">
@@ -91,6 +91,13 @@
     </div>
   </main>
 
+  <!-- Wellen-Video Section -->
+  <section id="waves" class="max-w-7xl mx-auto px-4 sm:px-6 mt-8">
+    <video autoplay loop muted playsinline class="w-full h-auto max-h-20 object-cover opacity-30">
+      <source src="assets/wellen.mp4" type="video/mp4">
+    </video>
+  </section>
+
   <!-- Footer -->
   <footer id="kontakt" class="bg-gray-900 text-gray-300 py-8">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 grid md:grid-cols-2">
@@ -116,12 +123,11 @@
     document.addEventListener("DOMContentLoaded", function() {
       // DARK MODE:
       const darkButton = document.getElementById("darkToggleButton");
-      // Prüfen, ob darkMode in localStorage gesetzt wurde
       if (localStorage.getItem('darkMode') === 'true') {
         document.documentElement.classList.add("dark");
-        darkButton.innerHTML = "☀️"; // Dark Mode aktiv → Icon zum Wechseln auf Light Mode
+        darkButton.innerHTML = "☀️";
       } else {
-        darkButton.innerHTML = "🌑"; // Default: Light Mode
+        darkButton.innerHTML = "🌑";
       }
 
       darkButton.addEventListener("click", function() {
@@ -129,15 +135,12 @@
         const isDark = document.documentElement.classList.contains("dark");
         localStorage.setItem('darkMode', isDark ? 'true' : 'false');
         darkButton.innerHTML = isDark ? "☀️" : "🌑";
-        console.log("Dark mode is now:", isDark);
       });
 
       // SPRACHUMSCHALTUNG:
-      // Falls eine Sprache in localStorage gespeichert wurde, verwende diese, ansonsten Default "de"
       let currentLang = localStorage.getItem('lang') || "de";
       const langButton = document.getElementById("langToggleButton");
 
-      // Sprachdefinitionen:
       const translations = {
         de: {
           title: "Geesthaven – Entdecke die Stadt",
@@ -187,7 +190,7 @@
         });
         document.title = translations[currentLang].title;
       }
-      updateLanguage(); // initialer Sprachstatus
+      updateLanguage();
 
       langButton.addEventListener("click", function() {
         currentLang = (currentLang === "de") ? "en" : "de";
