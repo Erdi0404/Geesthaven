@@ -93,7 +93,9 @@
 
   <!-- Wellen-Video Section -->
   <section id="waves" class="mt-16">
-    <video autoplay loop muted playsinline class="w-full h-auto object-cover opacity-40">
+    <!-- Das Video erstreckt sich von ganz links nach rechts, ist kleiner (max-h-16) und dezent transparent.
+         Das "loop" Attribut wurde entfernt, damit wir per JavaScript die Ping-Pong-Wiedergabe realisieren können. -->
+    <video autoplay muted playsinline class="w-full h-auto max-h-16 object-cover opacity-40">
       <source src="assets/wellen.mp4" type="video/mp4">
     </video>
   </section>
@@ -118,7 +120,7 @@
     </div>
   </footer>
 
-  <!-- JavaScript: Dark Mode & Sprachumschaltung mit Persistenz -->
+  <!-- JavaScript: Dark Mode, Sprachumschaltung und Ping-Pong Video Wiedergabe -->
   <script>
     document.addEventListener("DOMContentLoaded", function() {
       // DARK MODE:
@@ -129,6 +131,7 @@
       } else {
         darkButton.innerHTML = "🌑";
       }
+
       darkButton.addEventListener("click", function() {
         document.documentElement.classList.toggle("dark");
         const isDark = document.documentElement.classList.contains("dark");
@@ -139,6 +142,7 @@
       // SPRACHUMSCHALTUNG:
       let currentLang = localStorage.getItem('lang') || "de";
       const langButton = document.getElementById("langToggleButton");
+
       const translations = {
         de: {
           title: "Geesthaven – Entdecke die Stadt",
@@ -195,6 +199,26 @@
         langButton.innerHTML = (currentLang === "de") ? "EN" : "DE";
         updateLanguage();
       });
+
+      // PING-PONG WIEDERGABE FÜR DAS WELLEN-VIDEO:
+      const wavesVideo = document.querySelector("#waves video");
+      if(wavesVideo) {
+        // Start mit normaler Geschwindigkeit (vorwärts)
+        wavesVideo.playbackRate = 1;
+        wavesVideo.addEventListener("timeupdate", function() {
+          const tolerance = 0.1; // kleine Toleranz, um Rutschen zu vermeiden
+          if(wavesVideo.playbackRate > 0 && wavesVideo.currentTime >= wavesVideo.duration - tolerance) {
+            wavesVideo.pause();
+            wavesVideo.playbackRate = -1;
+            wavesVideo.play();
+          }
+          if(wavesVideo.playbackRate < 0 && wavesVideo.currentTime <= tolerance) {
+            wavesVideo.pause();
+            wavesVideo.playbackRate = 1;
+            wavesVideo.play();
+          }
+        });
+      }
     });
   </script>
 </body>
