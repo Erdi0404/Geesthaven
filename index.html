@@ -23,11 +23,12 @@
   <!-- Navigation -->
   <header class="bg-white dark:bg-gray-800 shadow-md fixed top-0 w-full z-50">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 py-4 flex justify-between items-center">
-      <div class="flex items-center space-x-3">
+      <!-- Hier werden Logo und Überschrift in einen Link gewrappt -->
+      <a href="/" class="flex items-center space-x-3">
         <img src="assets/wappen.png" alt="Wappen Geesthaven" class="h-12 w-auto">
         <h1 class="text-3xl font-bold text-blue-900 dark:text-blue-300">Geesthaven</h1>
-      </div>
-      <!-- Hier verweist "Start" auf die Root, sodass / und /index.html identisch laden -->
+      </a>
+      <!-- Navigation -->
       <nav class="hidden md:flex space-x-6 text-md font-medium text-gray-700 dark:text-gray-300">
         <a href="/" class="hover:text-blue-700 transition duration-300" data-i18n-key="nav_start">Start</a>
         <a href="aktuelles.html" class="hover:text-blue-700 transition duration-300" data-i18n-key="nav_aktuelles">Aktuelles</a>
@@ -43,7 +44,6 @@
         </button>
         <!-- Language Toggle Button -->
         <button id="langToggleButton" class="p-2 rounded-full bg-green-200 dark:bg-green-600 text-green-800 dark:text-green-100 transition-colors duration-300">
-          <!-- Standardmäßig zeigt er den jeweils anderen Sprachcode an -->
           EN
         </button>
       </div>
@@ -80,7 +80,7 @@
       </div>
     </div>
 
-    <!-- Card: Leben & Wohnen (soll immer sichtbar bleiben) -->
+    <!-- Card: Leben & Wohnen -->
     <div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-shadow duration-300">
       <img src="assets/life.png" alt="Leben in Geesthaven" class="w-full h-64 object-cover">
       <div class="p-5">
@@ -116,10 +116,10 @@
     document.addEventListener("DOMContentLoaded", function() {
       // DARK MODE:
       const darkButton = document.getElementById("darkToggleButton");
-      // Überprüfen, ob darkMode in localStorage gesetzt wurde
+      // Prüfen, ob darkMode in localStorage gesetzt wurde
       if (localStorage.getItem('darkMode') === 'true') {
         document.documentElement.classList.add("dark");
-        darkButton.innerHTML = "☀️"; // Dark Mode aktiv → Icon für Wechsel zu Light Mode
+        darkButton.innerHTML = "☀️"; // Dark Mode aktiv → Icon zum Wechseln auf Light Mode
       } else {
         darkButton.innerHTML = "🌑"; // Default: Light Mode
       }
@@ -133,19 +133,9 @@
       });
 
       // SPRACHUMSCHALTUNG:
-      // Falls schon eine Sprache in localStorage gespeichert ist, stelle sie ein
+      // Falls eine Sprache in localStorage gespeichert wurde, verwende diese, ansonsten Default "de"
       let currentLang = localStorage.getItem('lang') || "de";
       const langButton = document.getElementById("langToggleButton");
-
-      function updateLanguage() {
-        document.querySelectorAll("[data-i18n-key]").forEach(function(el) {
-          const key = el.getAttribute("data-i18n-key");
-          if (translations[currentLang] && translations[currentLang][key]) {
-            el.innerHTML = translations[currentLang][key];
-          }
-        });
-        document.title = translations[currentLang].title;
-      }
 
       // Sprachdefinitionen:
       const translations = {
@@ -187,15 +177,21 @@
         }
       };
 
-      // Falls schon eine Sprache in localStorage gespeichert ist, passe den Button
       langButton.innerHTML = (currentLang === "de") ? "EN" : "DE";
-      updateLanguage();
+      function updateLanguage() {
+        document.querySelectorAll("[data-i18n-key]").forEach(function(el) {
+          const key = el.getAttribute("data-i18n-key");
+          if (translations[currentLang] && translations[currentLang][key]) {
+            el.innerHTML = translations[currentLang][key];
+          }
+        });
+        document.title = translations[currentLang].title;
+      }
+      updateLanguage(); // initialer Sprachstatus
 
       langButton.addEventListener("click", function() {
-        // Umschalten der Sprache und speichern in localStorage
         currentLang = (currentLang === "de") ? "en" : "de";
         localStorage.setItem('lang', currentLang);
-        // Button-Text zeigt jeweils die andere Sprache an
         langButton.innerHTML = (currentLang === "de") ? "EN" : "DE";
         updateLanguage();
       });
