@@ -28,20 +28,25 @@
 
   <!-- Hero Section für Kontakt -->
   <section class="relative bg-blue-50 pt-24">
-    <img src="assets/kontakt-hero.jpg" alt="Kontakt Geesthaven" class="w-full h-64 object-cover">
-    <div class="absolute inset-0 bg-blue-900 bg-opacity-50 flex items-center justify-center">
-      <h2 class="text-white text-4xl font-bold drop-shadow-xl">Kontakt</h2>
+    <div class="h-80 sm:h-96 overflow-hidden">
+      <!-- Stelle sicher, dass 'assets/kontakt-hero.jpg' existiert und korrekt benannt ist -->
+      <img src="assets/kontakt-hero.jpg" alt="Kontakt Geesthaven" class="w-full h-full object-cover">
+      <div class="absolute inset-0 bg-blue-900 bg-opacity-50 flex items-center justify-center">
+        <h2 class="text-white text-4xl sm:text-5xl font-bold drop-shadow-lg">
+          Kontakt
+        </h2>
+      </div>
     </div>
   </section>
 
-  <!-- Inhalt -->
+  <!-- Inhaltsbereich -->
   <main class="max-w-4xl mx-auto px-6 py-12">
-    <article class="bg-white rounded-xl shadow-md p-6">
+    <article class="bg-white rounded-xl shadow-lg p-8">
       <h2 class="text-2xl font-bold text-blue-900 mb-4">Kontaktinformationen</h2>
       <p class="text-gray-700 mb-4">
-        Wir freuen uns auf Ihre Nachricht. Bei Fragen, Anregungen oder Beschwerden erreichen Sie uns über die folgenden Kontaktdaten:
+        Wir freuen uns auf Ihre Nachricht. Bei Fragen, Anregungen oder Beschwerden erreichen Sie uns über folgende Kontaktdaten:
       </p>
-      <ul class="text-gray-700 list-disc list-inside mb-4">
+      <ul class="list-disc list-inside text-gray-700 mb-4">
         <li><strong>Adresse:</strong> Rathausplatz 1, 12345 Geesthaven</li>
         <li><strong>Telefon:</strong> 01234 56789</li>
         <li><strong>E-Mail:</strong> <a href="mailto:info@geesthaven.de" class="text-blue-600 hover:underline">info@geesthaven.de</a></li>
@@ -60,14 +65,16 @@
           <label for="message" class="block text-gray-700">Nachricht</label>
           <textarea id="message" name="message" rows="4" class="w-full border border-gray-300 rounded p-2" required></textarea>
         </div>
-        <button type="submit" class="bg-blue-700 text-white px-4 py-2 rounded hover:bg-blue-800 transition duration-300">Absenden</button>
+        <button type="submit" class="bg-blue-700 text-white px-4 py-2 rounded hover:bg-blue-800 transition duration-300">
+          Absenden
+        </button>
       </form>
     </article>
   </main>
 
   <!-- Footer -->
   <footer id="kontakt" class="bg-gray-900 text-gray-300 py-8">
-    <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2">
+    <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-4">
       <div>
         <h4 class="text-lg font-semibold mb-2">Stadt Geesthaven</h4>
         <address class="not-italic">
@@ -77,7 +84,7 @@
           E-Mail: <a href="mailto:info@geesthaven.de" class="hover:underline">info@geesthaven.de</a>
         </address>
       </div>
-      <div class="md:text-right mt-4 md:mt-0">
+      <div class="md:text-right">
         <a href="impressum.html" class="block hover:underline">Impressum</a>
         <a href="datenschutz.html" class="block hover:underline mt-1">Datenschutz</a>
         <p class="mt-4 text-sm">&copy; 2025 Stadt Geesthaven</p>
