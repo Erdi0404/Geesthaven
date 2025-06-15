@@ -28,13 +28,18 @@
 
   <!-- Hero Section für Leben & Wohnen -->
   <section class="relative bg-blue-50 pt-24">
-    <img src="assets/leben-hero.jpg" alt="Leben &amp; Wohnen in Geesthaven" class="w-full h-64 object-cover">
-    <div class="absolute inset-0 bg-blue-900 bg-opacity-50 flex items-center justify-center">
-      <h2 class="text-white text-4xl font-bold drop-shadow-xl">Leben &amp; Wohnen in Geesthaven</h2>
+    <div class="h-80 sm:h-96 overflow-hidden">
+      <!-- Stelle sicher, dass das Bild 'assets/life.png' existiert -->
+      <img src="assets/life.png" alt="Leben &amp; Wohnen in Geesthaven" class="w-full h-full object-cover">
+      <div class="absolute inset-0 bg-blue-900 bg-opacity-60 flex items-center justify-center">
+        <h2 class="text-white text-4xl sm:text-5xl font-bold drop-shadow-lg">
+          Leben &amp; Wohnen in Geesthaven
+        </h2>
+      </div>
     </div>
   </section>
 
-  <!-- Inhalt -->
+  <!-- Inhaltsbereich -->
   <main class="max-w-4xl mx-auto px-6 py-12">
     <article class="bg-white rounded-xl shadow-md p-6">
       <h2 class="text-2xl font-bold text-blue-900 mb-4">Lebensqualität und Wohnkultur</h2>
@@ -52,7 +57,7 @@
 
   <!-- Footer -->
   <footer id="kontakt" class="bg-gray-900 text-gray-300 py-8">
-    <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2">
+    <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-4">
       <div>
         <h4 class="text-lg font-semibold mb-2">Stadt Geesthaven</h4>
         <address class="not-italic">
@@ -62,7 +67,7 @@
           E-Mail: <a href="mailto:info@geesthaven.de" class="hover:underline">info@geesthaven.de</a>
         </address>
       </div>
-      <div class="md:text-right mt-4 md:mt-0">
+      <div class="md:text-right">
         <a href="impressum.html" class="block hover:underline">Impressum</a>
         <a href="datenschutz.html" class="block hover:underline mt-1">Datenschutz</a>
         <p class="mt-4 text-sm">&copy; 2025 Stadt Geesthaven</p>
